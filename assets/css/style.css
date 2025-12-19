@@ -1,0 +1,343 @@
+/* --- GLOBAL VARIABLES --- */
+:root {
+  --primary: #4834d4;
+  --primary-light: #f0f3ff;
+  --indigo-light: #686de0;
+  --bg-body: #f8faff;
+  --sidebar-width: 260px;
+  --text-dark: #2d3436;
+  --text-gray: #b2bec3;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Admin & Auth Specific */
+  --sidebar-admin-bg: #1e272e;
+  --header-admin-dark: #131a20;
+  --midnight: #1e272e;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-body);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* --- LAYOUT STRUCTURE (Sidebar & Panel) --- */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: var(--transition);
+  z-index: 1000;
+  background: white;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
+}
+
+/* Sidebar Aktif (Tersembunyi ke kiri) */
+.sidebar.active {
+  left: calc(var(--sidebar-width) * -1);
+}
+
+.main-panel {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+/* Panel Aktif (Melebar penuh) */
+.main-panel.active {
+  margin-left: 0;
+}
+
+/* --- ADMIN SIDEBAR STYLE --- */
+.sidebar-admin {
+  background: var(--sidebar-admin-bg) !important;
+  color: white !important;
+}
+
+.sidebar-admin .sidebar-header {
+  background: var(--header-admin-dark);
+  color: white;
+  padding: 40px 25px;
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-admin .menu-item {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-admin .menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.sidebar-admin .menu-item.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* --- TOP NAVIGATION --- */
+.top-nav {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hamburger {
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--primary);
+  background: var(--primary-light);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.badge-admin {
+  background: rgba(72, 52, 212, 0.1);
+  color: var(--primary);
+  padding: 6px 15px;
+  border-radius: 30px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: 1px solid rgba(72, 52, 212, 0.2);
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(72, 52, 212, 0.2);
+}
+
+/* --- AUTH PAGES (LOGIN/REGISTER) --- */
+.auth-body {
+  background: radial-gradient(
+      circle at top right,
+      var(--indigo-light),
+      transparent
+    ),
+    radial-gradient(circle at bottom left, var(--midnight), #000);
+  background-color: #1e272e;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  filter: blur(120px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 24px;
+  width: 380px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+.login-box h2 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.login-box p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+  text-align: left;
+}
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px 14px 14px 45px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background: var(--indigo-light);
+  transform: translateY(-2px);
+}
+
+.toggle-link {
+  display: block;
+  margin-top: 25px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  text-decoration: none;
+}
+.toggle-link b {
+  color: #70a1ff;
+}
+
+/* --- SIDEBAR HEADER & MENU (User Dashboard) --- */
+.sidebar-header {
+  padding: 40px 25px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-item {
+  padding: 14px 25px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-gray);
+  margin: 5px 18px;
+  border-radius: 14px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.menu-item i {
+  width: 20px;
+  margin-right: 15px;
+  text-align: center;
+}
+.menu-item:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.menu-item.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 20px rgba(72, 52, 212, 0.25);
+}
+
+/* --- CONTENT AREA & OVERLAY --- */
+.content {
+  padding: 35px 40px;
+  animation: fadeIn 0.6s ease;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+.overlay.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .sidebar {
+    left: calc(var(--sidebar-width) * -1);
+  }
+  .main-panel {
+    margin-left: 0;
+    width: 100%;
+  }
+  .sidebar.active {
+    left: 0;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.1);
+  }
+  .top-nav {
+    padding: 0 20px;
+  }
+  .content {
+    padding: 25px 20px;
+  }
+}
