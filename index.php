@@ -31,7 +31,7 @@ $page = $_GET['page'] ?? 'dashboard';
         </div>
         <div style="margin-top: 10px;">
             <a href="index.php?page=dashboard" class="menu-item <?= $page == 'dashboard' ? 'active' : '' ?>">
-                <i class="fas fa-house-chimney-window"></i> Dashboard
+                <i class="fas fa-house-chimney-window"></i> Beranda
             </a>
             <a href="index.php?page=transaksi" class="menu-item <?= $page == 'transaksi' ? 'active' : '' ?>">
                 <i class="fas fa-wallet"></i> Transaksi
@@ -40,7 +40,7 @@ $page = $_GET['page'] ?? 'dashboard';
                 <i class="fas fa-chart-pie"></i> Laporan
             </a>
             <a href="index.php?page=budget" class="menu-item <?= $page == 'budget' ? 'active' : '' ?>">
-                <i class="fas fa-bullseye"></i> Goal Tabungan
+                <i class="fas fa-bullseye"></i> Target
             </a>
             <a href="index.php?page=profil" class="menu-item <?= $page == 'profil' ? 'active' : '' ?>">
                 <i class="fas fa-circle-user"></i> Profil Saya

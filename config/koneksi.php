@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $host = "localhost";
 $user = "root";
 $pass = "";
-$database   = "finance_tracker";
+$database   = "db_trackfinance";
 
 $conn = mysqli_connect($host, $user, $pass, $database);
 
