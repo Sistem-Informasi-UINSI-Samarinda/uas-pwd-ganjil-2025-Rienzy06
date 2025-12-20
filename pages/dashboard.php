@@ -11,7 +11,7 @@ $saldo = $masuk - $keluar;
 $persen = ($target > 0) ? ($keluar / $target) * 100 : 0;
 ?>
 
-<h2 style="margin-bottom: 20px; color: #2f3542;">Dashboard</h2>
+<h2 style="margin-bottom: 20px; color: #2f3542;">Ringkasan Keuangan</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
     <div style="background: white; padding: 20px; border-radius: 12px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
         <small style="color: #a4b0be; font-weight: bold;">TOTAL PEMASUKAN</small>
